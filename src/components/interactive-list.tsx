@@ -75,7 +75,16 @@ const productData = [
 
 export function InteractiveList() {
   const itemsName = productData.map((product) => {
-    return <li>{product.name}</li>;
+    return (
+      <>
+        <li className="flex gap-3 ">
+          <p id="list__item-name">{product.name}</p>
+          <p id="list__item-category">{product.category}</p>
+          <p id="list__item-price">{product.price}</p>
+          <p id="list__item-status">{product.status}</p>
+        </li>
+      </>
+    );
   });
   return (
     <>
@@ -83,9 +92,17 @@ export function InteractiveList() {
         <h1>List Title</h1>
       </div>
       <div>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                </tr>
+            </thead>
       <ul id="list">
         {itemsName}
       </ul>
+
+        </table>
 
       </div>
     </>
