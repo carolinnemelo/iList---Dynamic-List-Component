@@ -6,7 +6,8 @@ export const productData = [
       price: 1500, 
       stock: 25, 
       status: "In Stock", 
-      supplier: "TechCorp" 
+      supplier: "TechCorp",
+      student: "Adrien"
     },
     { 
       id: "C3D", 

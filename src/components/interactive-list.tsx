@@ -1,12 +1,19 @@
-import { createTableHeads, createTableRowData } from "../functions";
+import { Data } from "../types";
+import { tableHeadsData } from "./table-components/table-heads-data";
+import { tableRowData } from "./table-components/table-row-data";
 
-//add the types needed to your list 
-import { Data } from "../types"; 
-
-
-export function InteractiveList({ data, title }: { data: Data; title: string }) {
-    const tableHeads = createTableHeads(data);
-    const tableData = createTableRowData(data, Object.keys(data[0]) as Array<keyof Data[0]>);
+export function InteractiveList({
+  data,
+  title,
+}: {
+  data: Data;
+  title: string;
+}) {
+  const tableHeads = tableHeadsData(data);
+  const tableData = tableRowData(
+    data,
+    Object.keys(data[0]) as Array<keyof Data[0]>
+  );
 
   return (
     <div className="py-4">
@@ -17,10 +24,10 @@ export function InteractiveList({ data, title }: { data: Data; title: string }) 
         <table className="table table-zebra">
           <thead className="text-lg uppercase">
             <tr>
-            <th>#</th> 
-            {tableHeads}
+              <th>#</th>
+              {tableHeads}
             </tr>
-            </thead>
+          </thead>
           <tbody className="bg-base-content bg-opacity-30 ">{tableData}</tbody>
         </table>
       </div>
