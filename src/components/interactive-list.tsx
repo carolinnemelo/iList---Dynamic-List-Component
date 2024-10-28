@@ -16,7 +16,7 @@ const productData = [
 
 export function InteractiveList() {
     const tableHeads = createTableHeads(productData);
-    const tableData = createTableRowData(productData, Object.keys(productData[0]));
+    const tableData = createTableRowData(productData, Object.keys(productData[0])  as Array<keyof Data[0]>);
 
   return (
     <div className="py-4">
@@ -41,7 +41,7 @@ export function InteractiveList() {
 
  function createTableHeads(data: Data) {
     if (data.length === 0) return null;
-    const keys = Object.keys(data[0]);
+    const keys = Object.keys(data[0])  as Array<keyof Data[0]>;
       return (
         <>
           {keys.map((key) => (
@@ -54,7 +54,7 @@ export function InteractiveList() {
   }
   
   
-function createTableRowData(data: Data, tableHeads: string[]) {
+function createTableRowData(data: Data, tableHeads: Array<keyof Data[0]>) {
     return data.map((e, index) => {
       return (
           <tr key={e.id}>
