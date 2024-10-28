@@ -1,8 +1,6 @@
-type Data = {
-    name: string;
-    price: number;
-    status: string;
-}[]
+import { createTableHeads, createTableRowData } from "../functions";
+
+
 
 const productData = [
   { name: "Laptop", price: 1500, status: "In Stock" },
@@ -15,43 +13,21 @@ export function InteractiveList() {
   const tableData = createTableRowData(productData);
 
   return (
-    <>
+    <div >
       <div id="list__title">
         <h1>List Title</h1>
       </div>
-      <div>
-        <table>
-          <thead>{tableHeads}</thead>
+      <div className="overflow-x-auto">
+        <table className="table table-zebra">
+          <thead>
+            <th></th>
+            {tableHeads}
+            </thead>
           <tbody>{tableData}</tbody>
-          <ul id="list"></ul>
         </table>
       </div>
-    </>
+    </div>
   );
 }
 
-function createTableHeads(data: Data) {
-  const keys: string[] = Object.keys(data[0]);
-  return keys.map((key) => {
-    return (
-      <th>
-        <h3>{key}</h3>
-      </th>
-    );
-  });
-}
-
-function createTableRowData(data: Data) {
-  return data.map((e) => {
-    return (
-      <>
-        <tr>
-          <td>{e.name}</td>
-          <td>{e.price}</td>
-          <td>{e.status}</td>
-        </tr>
-      </>
-    );
-  });
-}
 
