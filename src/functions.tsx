@@ -12,12 +12,11 @@ export function createTableHeads(data: Data) {
 }
 
 export function createTableRowData(data: Data) {
-  let counter = 1;
   return data.map((e) => {
     return (
       <>
         <tr className="">
-        <th>{counter++}</th>
+        <th>{e.id}</th>
           <td>{e.name}</td>
           <td>{e.price}</td>
           <td>{e.status}</td>
