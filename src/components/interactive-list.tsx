@@ -9,8 +9,8 @@ const productData = [
 ];
 
 export function InteractiveList() {
-  const tableHeads = createTableHeads(productData);
-  const tableData = createTableRowData(productData);
+    const tableHeads = createTableHeads(productData);
+    const tableData = createTableRowData(productData, Object.keys(productData[0]));
 
   return (
     <div className="py-4">
@@ -20,7 +20,10 @@ export function InteractiveList() {
       <div className="overflow-x-auto ">
         <table className="table table-zebra">
           <thead className="text-lg uppercase">
+            <tr>
+
             {tableHeads}
+            </tr>
             </thead>
           <tbody className="bg-base-content bg-opacity-30 ">{tableData}</tbody>
         </table>
