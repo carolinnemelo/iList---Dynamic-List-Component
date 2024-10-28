@@ -1,5 +1,11 @@
-import { createTableHeads, createTableRowData } from "../functions";
+// import { createTableHeads, createTableRowData } from "../functions";
 
+export type Data = {
+    id: number;
+    name: string;
+    price: number;
+    status: string;
+}[]
 
 
 const productData = [
@@ -21,7 +27,7 @@ export function InteractiveList() {
         <table className="table table-zebra">
           <thead className="text-lg uppercase">
             <tr>
-
+            <th>#</th> 
             {tableHeads}
             </tr>
             </thead>
@@ -33,3 +39,30 @@ export function InteractiveList() {
 }
 
 
+ function createTableHeads(data: Data) {
+    if (data.length === 0) return null;
+    const keys = Object.keys(data[0]);
+      return (
+        <>
+          {keys.map((key) => (
+            <th key={key}>
+              <h3>{key}</h3>
+            </th>
+          ))}
+        </>
+      );
+  }
+  
+  
+function createTableRowData(data: Data, tableHeads: string[]) {
+    return data.map((e, index) => {
+      return (
+          <tr key={e.id}>
+            <td>{index + 1}</td>
+          {tableHeads.map((head) => (
+            <td key={head}>{e[head] || "-"}</td>
+          ))}
+        </tr>
+      );
+    });
+  }
