@@ -1,9 +1,10 @@
 import { InteractiveList } from "./components/interactive-list";
+import { productData } from "./data";
 
 function App() {
   return (
     <>
-      <InteractiveList />
+      <InteractiveList data={productData} title="Ilist"/>
     </>
   );
 }
